@@ -1,5 +1,4 @@
-# The Eventual PlayFramework-AngularJS-Bootstrap-MongoDB Seed Project
-
+# togglz ui based on PlayFramework AngularJS Bootstrap and MongoDB
 ## Introduction
 
 The Eventual PlayFramework-AngularJS-Bootstrap-MongoDB Seed Project is a seed project that provides a [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) implementation. It uses the [Play Framework](http://www.playframework.com/) and [MongoDB](http://www.mongodb.org/) on the back-end, and [AngularJS](http://angularjs.org/) and [Bootstrap](http://getbootstrap.com/) on the front-end. It is designed to underpin the development of future applications that adopt the same combination of technologies.
