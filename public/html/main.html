@@ -1,0 +1,18 @@
+<div>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>enabled</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="featureState in featureStates | orderBy:['name']">
+				<td class="pad">{{featureState.name}}</td>
+				<td class="pad">{{featureState.enabled}}</td>
+				<td><a href="/edit/{{featureState.id.$oid}}"><i class="glyphicon glyphicon-pencil"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
