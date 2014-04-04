@@ -21,7 +21,7 @@ import reactivemongo.bson.Producer.nameValue2Producer
 
 
 object FeatureStates extends Controller with MongoController {
-  val collection = db[BSONCollection]("featureStates")
+  val collection = db[BSONCollection]("featureState")
 
   /** list all featureStates */
   def index = Action.async {
@@ -29,7 +29,7 @@ object FeatureStates extends Controller with MongoController {
       BSONDocument(), BSONDocument()).cursor[FeatureState] // get all the fields of all the featureStates
     val futureList = cursor.collect[Vector]()
     futureList.map {
-      featureStates => Ok(Json.toJson(featureStates))
+      featureStates => Ok(Json.toJson(Map))
     } // convert it to a JSON and return it
   }
 
