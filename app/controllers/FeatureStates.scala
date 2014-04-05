@@ -7,7 +7,7 @@ import models.FeatureState.featureStateFormat
 import models.FeatureState.FeatureStateBSONReader
 import models.FeatureState.FeatureStateBSONWriter
 
-import play.api.libs.json.Json
+import play.api.libs.json.{JsValue, Json}
 import play.api.mvc.Action
 import play.api.mvc.Controller
 import play.modules.reactivemongo.MongoController
@@ -26,11 +26,17 @@ object FeatureStates extends Controller with MongoController {
   /** list all featureStates */
   def index = Action.async {
     val cursor = collection.find(
-      BSONDocument(), BSONDocument()).cursor[FeatureState] // get all the fields of all the featureStates
+      BSONDocument(), BSONDocument()).cursor[FeatureState]
     val futureList = cursor.collect[Vector]()
     futureList.map {
-      featureStates => Ok(Json.toJson(Map))
-    } // convert it to a JSON and return it
+      featureStates => val json: JsValue = Json.toJson(
+        featureStates.map(
+          featureState => Map(
+            "name" -> featureState.name,
+            "enabled" -> featureState.enabled.toString,
+            "id" -> featureState.id.get.stringify)))
+        Ok(json)
+    }
   }
 
   /** create a featureState from the given JSON */
